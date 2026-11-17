@@ -7,21 +7,16 @@ const film = {
 	duration: 112,
 };
 
-function createChildElement(parentElement, tagName, textContent) {
-	const element = document.createElement(tagName);
-	element.textContent = textContent;
-	parentElement.append(element);
-	return element;
-};
+const card = document.getElementById("film-card").content.cloneNode(true);
 
-const card = document.createElement("section");
-
-createChildElement(card, "h3", film.title);
-
-createChildElement(card, "p", `Director: ${film.director}`);
-
-createChildElement(card, "time", `${film.duration} minutes`);
-
-createChildElement(card, "data", `Certificate: ${film.certificate}`);
+// Now we are querying our cloned fragment, not the entire page.
+card.querySelector("h3").textContent = film.title;
+card.querySelector(
+  "[data-director]"
+).textContent = `Director: ${film.director}`;
+card.querySelector("time").textContent = `${film.duration} minutes`;
+card.querySelector(
+  "[data-certificate]"
+).textContent = `Certificate: ${film.certificate}`;
 
 document.body.append(card);
