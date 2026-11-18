@@ -22,7 +22,10 @@ const createFilmCard = ({title, director, certificate, duration}) => {
   return card;
 };
 
-const filmCard = createFilmCard(film);
+const filmCards = [];
+for (const item of films) {
+	filmCards.push(createFilmCard(item));
+}
 
 // Remember we need to append the card to the DOM for it to appear.
-document.body.append(filmCard);
+document.body.append(...filmCards);
