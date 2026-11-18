@@ -1,10 +1,13 @@
-const film = {
+const films = [
+{
   title: "Killing of Flower Moon",
   director: "Martin Scorsese",
   times: ["15:35"],
   certificate: "15",
   duration: 112,
-};
+},
+
+];
 
 const template = document.getElementById("film-card");
 
@@ -23,9 +26,10 @@ const createFilmCard = ({title, director, certificate, duration}) => {
 };
 
 const filmCards = [];
+
 for (const item of films) {
 	filmCards.push(createFilmCard(item));
-}
+};
 
 // Remember we need to append the card to the DOM for it to appear.
 document.body.append(...filmCards);
