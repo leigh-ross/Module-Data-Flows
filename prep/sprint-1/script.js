@@ -1,22 +1,28 @@
-
 const film = {
-	title: "Killing of Flower Moon",
-	director: "Martin Scorsese",
-	times: ["15:35"],
-	certificate: "15",
-	duration: 112,
+  title: "Killing of Flower Moon",
+  director: "Martin Scorsese",
+  times: ["15:35"],
+  certificate: "15",
+  duration: 112,
 };
 
-const card = document.getElementById("film-card").content.cloneNode(true);
+const template = document.getElementById("film-card");
 
-// Now we are querying our cloned fragment, not the entire page.
-card.querySelector("h3").textContent = film.title;
-card.querySelector(
-  "[data-director]"
-).textContent = `Director: ${film.director}`;
-card.querySelector("time").textContent = `${film.duration} minutes`;
-card.querySelector(
-  "[data-certificate]"
-).textContent = `Certificate: ${film.certificate}`;
+const createFilmCard = ({title, director, certificate, duration}) => {
+  const card = template.content.cloneNode(true);
 
-document.body.append(card);
+  // Now we are querying our cloned fragment, not the entire page.
+  card.querySelector("h3").textContent = title;
+  card.querySelector("[data-director]").textContent =
+    `Director: ${director}`;
+  card.querySelector("time").textContent = `${duration} minutes`;
+  card.querySelector("[data-certificate]").textContent =
+    `Certificate: ${certificate}`;
+  // Return the card, rather than directly appending it to the page
+  return card;
+};
+
+const filmCard = createFilmCard(film);
+
+// Remember we need to append the card to the DOM for it to appear.
+document.body.append(filmCard);
