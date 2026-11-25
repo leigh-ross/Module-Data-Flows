@@ -15,6 +15,7 @@ const state = {
       duration: 108,
     },
   ],
+  searchTerm: "Pirate",
 };
 
 const template = document.getElementById("film-card");
