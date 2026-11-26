@@ -38,8 +38,7 @@ searchBox.addEventListener("input", handleSearchInput);
 
 function handleSearchInput(event) {
   const searchTerm = event.target.value;
-  console.log(searchTerm);
-  //search.addEventListener("input", handleInput);
+  render();
 }
 
 function render() {
