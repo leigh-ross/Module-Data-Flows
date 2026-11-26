@@ -47,6 +47,7 @@ function render() {
     film.title.toLowerCase().includes(searchTerm)
   );
   const filmCards = filteredFilms.map(createFilmCard);
+  document.body.textContent = "";
   document.body.append(...filmCards);
 }
 
