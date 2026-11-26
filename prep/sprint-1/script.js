@@ -15,7 +15,7 @@ const state = {
       duration: 108,
     },
   ],
-  searchTerm: "flower",
+  searchTerm: "",
 };
 
 const template = document.getElementById("film-card");
@@ -33,8 +33,17 @@ const createFilmCard = ({ title, director, certificate, duration }) => {
   return card;
 };
 
+const searchBox = document.getElementById("search");
+searchBox.addEventListener("input", handleSearchInput);
+
+function handleSearchInput(event) {
+  const searchTerm = event.target.value;
+  console.log(searchTerm);
+  //search.addEventListener("input", handleInput);
+}
+
 function render() {
-  const searchTerm = state.searchTerm.toLowerCase()
+  const searchTerm = state.searchTerm.toLowerCase();
   const filteredFilms = state.films.filter((film) =>
     film.title.toLowerCase().includes(searchTerm)
   );
