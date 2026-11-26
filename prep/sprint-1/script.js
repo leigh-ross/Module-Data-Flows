@@ -19,6 +19,7 @@ const state = {
 };
 
 const template = document.getElementById("film-card");
+const resultsContainer = document.getElementById("results");
 
 const createFilmCard = ({ title, director, certificate, duration }) => {
   const card = template.content.cloneNode(true);
@@ -37,7 +38,7 @@ const searchBox = document.getElementById("search");
 searchBox.addEventListener("input", handleSearchInput);
 
 function handleSearchInput(event) {
-  const searchTerm = event.target.value;
+  state.searchTerm = event.target.value;
   render();
 }
 
@@ -47,8 +48,8 @@ function render() {
     film.title.toLowerCase().includes(searchTerm)
   );
   const filmCards = filteredFilms.map(createFilmCard);
-  document.body.textContent = "";
-  document.body.append(...filmCards);
+  resultsContainer.textContent = "";
+  resultsContainer.append(...filmCards);
 }
 
 render();
