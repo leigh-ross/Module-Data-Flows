@@ -34,7 +34,10 @@ const createFilmCard = ({ title, director, certificate, duration }) => {
 };
 
 function render() {
-  const filmCards = state.films.map(createFilmCard);
+  const filteredFilms = state.films.filter((film) =>
+    film.title.includes(state.searchTerm)
+  );
+  const filmCards = filteredFilms.map(createFilmCard);
   document.body.append(...filmCards);
 }
 
